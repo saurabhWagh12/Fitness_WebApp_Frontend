@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
+import Navbar from '../components/Navbar';
 
 class Form extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Form extends Component {
       equipmentAccess: '',
       injuryStatus: '',
       workoutDays: '',
-      preferredTime: 'morning',
+      // preferredTime: 'morning',
       timeCommitment: '',
       fitnessGoal: 'stay fit',
       plan: null, // State for the workout plan
@@ -42,7 +43,7 @@ class Form extends Component {
   - Fitness level: ${level} (${fitnessGoal} focus)
   - Equipment available: ${equipmentAccess}
   - Health concerns: ${injuryStatus}
-  - Available workout days: ${workoutDays} days per week (preferred time: ${preferredTime})
+  - Available workout days: ${workoutDays} days per week
   - Time commitment: ${timeCommitment} hours per week
 
   Please create a custom workout routine for my personal fitness journey that is unique to my needs. 
@@ -73,16 +74,20 @@ class Form extends Component {
       equipmentAccess,
       injuryStatus,
       workoutDays,
-      preferredTime,
+      // preferredTime,
       timeCommitment,
       fitnessGoal,
-      plan, // Accessing plan from state
+      plan, 
     } = this.state;
 
     return (
       <>
+      <div className="bg-slate-700 min-h-screen">
+        <Navbar/>
+        <div className="py-10">
         {plan === null ? (
-          <div className="max-w-lg mx-auto p-6 text-black bg-white shadow-md rounded-lg">
+          
+          <div className="max-w-lg mx-auto p-6 text-black bg-white shadow-md rounded-l">
             <h2 className="text-2xl font-bold mb-4 text-center">Tell us about yourself</h2>
             <form onSubmit={this.handleSubmit}>
               <div className="mb-4">
@@ -170,19 +175,19 @@ class Form extends Component {
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300"
                 />
               </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">Preferred Time:</label>
+              {/* <div className="mb-4"> */}
+                {/* <label className="block text-sm font-medium text-gray-700">Preferred Time:</label>
                 <select
                   name="preferredTime"
                   value={preferredTime}
                   onChange={this.handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300"
-                >
-                  <option value="morning">Morning</option>
+                > */}
+                  {/* <option value="morning">Morning</option>
                   <option value="afternoon">Afternoon</option>
                   <option value="evening">Evening</option>
-                </select>
-              </div>
+                </select> */}
+              {/* </div> */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">Time Commitment (hours per week):</label>
                 <input
@@ -201,9 +206,12 @@ class Form extends Component {
                   onChange={this.handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300"
                 >
-                  <option value="bulk">Bulk</option>
-                  <option value="cut">Cut</option>
+                  <option value="Gain Muscles">Gain Muscles</option>
                   <option value="stay fit">Stay Fit</option>
+                  <option value="Body Recomposition">Body Recomposition</option>
+                  <option value="Loose Fat">Loose Fat</option>
+                  <option value="Stamina">Stamina</option>
+                  <option value="Endurance">Endurance</option>
                 </select>
               </div>
               <button onClick={this.handleSubmit} type="submit" className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition duration-200">
@@ -212,11 +220,13 @@ class Form extends Component {
             </form>
           </div>
         ) : (
-          <div>
-            <h1 className="text-3xl font-bold  py-10">Your Workout Plan is Ready</h1>
-            <a href='/myplans/' className="text-xl font-medium">Check Plan</a>
+          <div className='text-center'>
+            <h1 className="text-3xl font-bold  py-10 text-center">Your Workout Plan is Ready</h1>
+            <div className="text-center"><a href='/myplans/' className="text-xl font-medium">Check Plan</a></div>
           </div>
         )}
+        </div>
+      </div>
       </>
     );
   }

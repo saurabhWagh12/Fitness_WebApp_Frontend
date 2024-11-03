@@ -54,13 +54,31 @@ function page() {
                 <button onClick={logout} className='px-2 py-1 sm:text-md md:text-md lg:text-xl xl:text-xl bg-slate-300 text-black font-mono rounded-lg mx-8 float-right mt-3'>Logout</button>
         </nav>
 
-        <div className='flex justify-center pt-10'>
-        <div className='flex flex-wrap justify-between w-[90%] font-semibold text-center'>
-          <a href='/myplans/' className='w-1/5 text-white bg-slate-400 rounded-lg py-4'>My Plans</a>
-          <a href='/createplan/' className='w-1/5 text-white  bg-slate-400 rounded-lg py-4'>Create Plan</a>
-          <a href='/tutorial/' className='w-1/5 text-white  bg-slate-400 rounded-lg py-4'>Workout Tutorial</a>
-          <a href='/nutrition/' className='w-1/5 text-white  bg-slate-400 rounded-lg py-4'>Nutrition</a>
-        </div>
+        <div className='flex justify-center pt-10 '>
+        <div className='flex flex-wrap gap-20 justify-center w-[90%] font-semibold text-center'>
+          <a href='/myplans/'  className='w-1/5 text-white bg-slate-400 rounded-lg py-4'>
+            <img src='https://media.istockphoto.com/id/928088390/photo/human-hand-preparing-workout-plan.jpg?s=612x612&w=0&k=20&c=5XRbw8ZTVRsw6UHxVjwUKFwMyGWqcDhr8io5oVVavgw=' />
+            <p>My Plans</p>
+          </a>
+          <a href='/createplan/' className='w-1/5 text-white bg-slate-400 rounded-lg py-4'>
+            <img src='https://media.istockphoto.com/id/675179390/photo/muscular-trainer-writing-on-clipboard.jpg?s=1024x1024&w=is&k=20&c=WNuBnKdaPcBho-CjmRrdBVlIy8TCegBTo4ZdmbTj7aE=' />
+            <p>Create Plan</p>
+          </a>
+          <a href='/tutorial/' className='w-1/5 text-white bg-slate-400 rounded-lg py-4'>
+            <img src='https://media.istockphoto.com/id/1387629073/photo/personal-trainer-assisting-a-man-in-training.jpg?s=1024x1024&w=is&k=20&c=0SX-AjIS37ngkgFfiW9xwx4f37GLhHiCmfyJ2pRFVCI=' />
+            <p>Workout Tutorials</p>
+          </a>
+          <a href='/nutrition/'  className='w-1/5 text-white bg-slate-400 rounded-lg py-4'>
+            <img  src='https://media.istockphoto.com/id/850904524/photo/healthy-food-take-away-top-view-at-wood-background.jpg?s=612x612&w=0&k=20&c=XIyRaW-paEbEx7UYWgkhVCya_5oXaZ9wi4l-zzva7no=' />
+            <p>Nutrition</p>
+          </a>
+
+          {/* <a href='/recipe/'  className='w-1/5 text-white bg-slate-400 rounded-lg py-4'>
+            <img  src='https://media.istockphoto.com/id/850904524/photo/healthy-food-take-away-top-view-at-wood-background.jpg?s=612x612&w=0&k=20&c=XIyRaW-paEbEx7UYWgkhVCya_5oXaZ9wi4l-zzva7no=' />
+            <p>Recipe</p>
+          </a> */}
+
+         </div>
         </div>
        
     </div>

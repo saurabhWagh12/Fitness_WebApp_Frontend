@@ -1,9 +1,9 @@
-"use client"
+'use client'
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player/youtube'
+import ReactPlayer from 'react-player/youtube';
 import Navbar from '../components/Navbar';
 
 function Page() {
@@ -11,13 +11,19 @@ function Page() {
     const [plans, setPlans] = useState([]);
     const [selectedPlan, setSelectedPlan] = useState(null); // Track selected plan
     const [isModalOpen, setIsModalOpen] = useState(false);  // Track modal visibility
+
     useEffect(() => {
         const fetchPlans = async () => {
             const data = { token: Cookies.get('token') };
             try {
                 const response = await axios.post('http://127.0.0.1:8000/myplans/', data);
                 if (response.data.status === 200) {
-                    setPlans(response.data.data);
+                    // Replace all * and # with spaces in the plan
+                    const updatedPlans = response.data.data.map(plan => ({
+                        ...plan,
+                        plan: plan.plan.replace(/[*#]/g, ' ') // Replace * and # with spaces
+                    }));
+                    setPlans(updatedPlans);
                 } else {
                     alert('Error in Fetching the plans');
                     console.log(response.data);
@@ -65,6 +71,8 @@ function Page() {
         try {
             if(response.data.status===200){
                 setWorkouts(response.data.data);
+
+                
             }else{
                 console.log('Error in Fetching Searched Workouts');
             }
@@ -86,7 +94,6 @@ function Page() {
                             onClick={() => openModal(plan)} // Open modal on click
                         >
                             <h2 className='text-xl font-bold mb-2'>{plan.plan_name}</h2>
-                            {/* <p>{plan.plan}</p> */}
                         </div>
                     ))
                 ) : (
@@ -100,11 +107,14 @@ function Page() {
                     <div className='bg-white p-6 rounded-lg shadow-lg max-w-[80%] font-semibold w-full h-auto max-h-[80vh] overflow-auto text-black'>
                         <div className='flex justify-between'>
                             <h2 className='text-2xl font-bold mb-4'>{selectedPlan.plan_name}</h2>
-                            <div className='flex justify-center my-4 gap-10'><input className='border-black border-2 rounded-lg  w-[80%] font-semibold text-center' onChange={(e)=>setSearch(e.target.value)} placeholder='Search Workouts'></input>
-                                <button className='bg-slate-500 font-semibold text-white px-4 py-2 rounded-xl' onClick={searchFunction}>Search</button>
+                            <div className='flex justify-center my-4 gap-10'>
+                                <input className='border-black border-2 rounded-lg  w-[80%] font-semibold text-center' 
+                                    onChange={(e)=>setSearch(e.target.value)} placeholder='Search Workouts' />
+                                <button className='bg-slate-500 font-semibold text-white px-4 py-2 rounded-xl' onClick={searchFunction}>
+                                    Search
+                                </button>
                             </div>
                         </div>
-
 
                         {/* Workout tutorial list */}
                         <div className='flex justify-center flex-wrap gap-10 py-10'>
@@ -117,20 +127,18 @@ function Page() {
                                     </div>
                                 ))
                             ) : (
-                                // <p className='text-white text-center font-bold '>No workouts found</p>
                                 <></>
                             )}
                         </div>
 
-
                         <p className='whitespace-pre-line'>{selectedPlan.plan}</p>
                         <div className='flex justify-between'>
-                        <button onClick={closeModal} className='mt-4 bg-blue-500 text-white px-4 py-2 rounded'>
-                            Close
-                        </button>
-                        <button onClick={()=>{deletePlan(selectedPlan.id)}} className='mt-4 bg-red-500 text-white px-4 py-2 rounded'>
-                            Delete
-                        </button>
+                            <button onClick={closeModal} className='mt-4 bg-blue-500 text-white px-4 py-2 rounded'>
+                                Close
+                            </button>
+                            <button onClick={()=>{deletePlan(selectedPlan.id)}} className='mt-4 bg-red-500 text-white px-4 py-2 rounded'>
+                                Delete
+                            </button>
                         </div>
                     </div>
                 </div>
