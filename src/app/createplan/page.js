@@ -17,10 +17,10 @@ class Form extends Component {
       equipmentAccess: '',
       injuryStatus: '',
       workoutDays: '',
-      // preferredTime: 'morning',
+      preferredTime: 'male',
       timeCommitment: '',
       fitnessGoal: 'stay fit',
-      plan: null, // State for the workout plan
+      plan: null, 
     };
   }
 
@@ -40,11 +40,13 @@ class Form extends Component {
   - Age: ${age} years
   - Height: ${height} cm
   - Weight: ${weight} kg
+  - Gender: ${preferredTime}
   - Fitness level: ${level} (${fitnessGoal} focus)
   - Equipment available: ${equipmentAccess}
   - Health concerns: ${injuryStatus}
   - Available workout days: ${workoutDays} days per week
   - Time commitment: ${timeCommitment} hours per week
+  
 
   Please create a custom workout routine for my personal fitness journey that is unique to my needs. 
   Ensure the plan is tailored specifically for me, considering my goals and constraints.
@@ -74,7 +76,7 @@ class Form extends Component {
       equipmentAccess,
       injuryStatus,
       workoutDays,
-      // preferredTime,
+      preferredTime,
       timeCommitment,
       fitnessGoal,
       plan, 
@@ -175,19 +177,18 @@ class Form extends Component {
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300"
                 />
               </div>
-              {/* <div className="mb-4"> */}
-                {/* <label className="block text-sm font-medium text-gray-700">Preferred Time:</label>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Gender:</label>
                 <select
-                  name="preferredTime"
+                  name="Gender"
                   value={preferredTime}
                   onChange={this.handleChange}
                   className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-300"
-                > */}
-                  {/* <option value="morning">Morning</option>
-                  <option value="afternoon">Afternoon</option>
-                  <option value="evening">Evening</option>
-                </select> */}
-              {/* </div> */}
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">Time Commitment (hours per week):</label>
                 <input

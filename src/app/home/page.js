@@ -73,6 +73,11 @@ function page() {
             <p>Nutrition</p>
           </a>
 
+          <a href='http://localhost:3001/'  className='w-1/5 text-white bg-slate-400 rounded-lg py-4'>
+            <img  src='https://images.pexels.com/photos/802417/pexels-photo-802417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' />
+            <p>AI Based Yoga Tutorial</p>
+          </a>
+
           {/* <a href='/recipe/'  className='w-1/5 text-white bg-slate-400 rounded-lg py-4'>
             <img  src='https://media.istockphoto.com/id/850904524/photo/healthy-food-take-away-top-view-at-wood-background.jpg?s=612x612&w=0&k=20&c=XIyRaW-paEbEx7UYWgkhVCya_5oXaZ9wi4l-zzva7no=' />
             <p>Recipe</p>
